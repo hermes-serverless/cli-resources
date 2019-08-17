@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
 import { Environment } from '../Environment'
-import { User } from '../typings'
+import { User } from '../globalTypes'
 import { getAuthorizationHeader } from '../utils/authUtils'
 
 export interface UpdatedUser {

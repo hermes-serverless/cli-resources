@@ -1,5 +1,5 @@
 import { FunctionID } from '../datasources/HermesFunction'
-import { HermesFunction, HermesFunctionProto } from '../typings'
+import { HermesFunction, HermesFunctionProto } from '../globalTypes'
 import { parseHermesConfig } from '../utils/functionUtils'
 import { ImageNamer } from './ImageNamer'
 

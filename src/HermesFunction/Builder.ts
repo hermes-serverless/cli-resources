@@ -1,6 +1,6 @@
 import axios from 'axios'
 import chalk from 'chalk'
-import { BuiltFunction, BuiltWatcher } from '../typings'
+import { BuiltFunction, BuiltWatcher } from '../globalTypes'
 import { DataProvider } from './DataProvider'
 import { DockerRunner } from './DockerRunner'
 

@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
 import { Environment } from '../Environment'
-import { AuthObj, User, UsernameExistenceObj } from '../typings'
+import { AuthObj, User, UsernameExistenceObj } from '../globalTypes'
 import { getAuthorizationHeader } from '../utils/authUtils'
 
 export interface UserForAuth extends User {

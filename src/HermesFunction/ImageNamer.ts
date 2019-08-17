@@ -1,4 +1,4 @@
-import { HermesFunctionProto } from '../typings'
+import { HermesFunctionProto } from '../globalTypes'
 
 export class ImageNamer {
   private config: HermesFunctionProto

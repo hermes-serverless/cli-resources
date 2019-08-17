@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import fs from 'fs'
 import path from 'path'
-import { HermesFunctionProto } from '../typings'
+import { HermesFunctionProto } from '../globalTypes'
 
 export const parseHermesConfig = (dir: string): HermesFunctionProto => {
   const hermesPath = path.join(dir, 'hermes.config.json')
