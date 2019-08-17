@@ -1,4 +1,4 @@
-import { HermesFunctionProto } from '../typings.d'
+import { HermesFunctionProto } from '../typings'
 
 export class ImageNamer {
   private config: HermesFunctionProto

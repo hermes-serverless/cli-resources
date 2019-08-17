@@ -6,7 +6,7 @@ import {
 } from '@hermes-serverless/api-types-db-manager/function'
 import axios, { AxiosInstance } from 'axios'
 import { Environment } from '../Environment'
-import { HermesFunction } from '../typings.d'
+import { HermesFunction } from '../typings'
 import { getAuthorizationHeader } from '../utils/authUtils'
 
 export interface PartialFunctionID {
