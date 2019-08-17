@@ -32,7 +32,7 @@ export class RunDatasource {
   private static client: AxiosInstance = axios.create()
 
   private static get baseURL() {
-    return Environment.baseURL + '/auth'
+    return Environment.baseURL + '/user'
   }
 
   public static async getRuns(username: string, runID: { id?: string }, token: string): Promise<RunGetObj> {
