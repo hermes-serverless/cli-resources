@@ -1,6 +1,6 @@
 {
   "name": "@hermes-serverless/cli-resources",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
@@ -27,17 +27,17 @@
   },
   "homepage": "https://github.com/hermes-serverless/cli-resources#readme",
   "dependencies": {
+    "@hermes-serverless/api-types-db-manager": "^0.0.2",
+    "@hermes-serverless/api-types-function-watcher": "^0.0.1",
     "@hermes-serverless/custom-promises": "^0.1.0",
     "@hermes-serverless/stream-utils": "^0.4.0",
+    "@types/request": "^2.48.2",
     "axios": "^0.19.0",
     "execa": "^2.0.4",
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "@hermes-serverless/api-types-db-manager": "^0.0.2",
-    "@hermes-serverless/api-types-function-watcher": "^0.0.1",
     "@types/jest": "^24.0.11",
-    "@types/request": "^2.48.2",
     "jest": "^24.7.1",
     "nodemon": "^1.19.0",
     "prettier": "^1.17.0",
