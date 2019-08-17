@@ -120,7 +120,7 @@ export class RunDatasource {
     try {
       const { functionOwner, functionName, functionVersion } = functionID
       const res = request.post(
-        this.baseURL + `${this.baseURL}/user/${username}/run/${functionOwner}/${functionName}/${functionVersion}`,
+        this.baseURL + `/user/${username}/run/${functionOwner}/${functionName}/${functionVersion}`,
         {
           headers: {
             ...getAuthorizationHeader(token),
