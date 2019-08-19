@@ -119,15 +119,12 @@ export class RunDatasource {
   ): Promise<request.Request> {
     try {
       const { functionOwner, functionName, functionVersion } = functionID
-      const res = request.post(
-        this.baseURL + `/user/${username}/run/${functionOwner}/${functionName}/${functionVersion}`,
-        {
-          headers: {
-            ...getAuthorizationHeader(token),
-            'x-hermes-run-type': 'sync',
-          },
-        }
-      )
+      const res = request.post(this.baseURL + `/${username}/run/${functionOwner}/${functionName}/${functionVersion}`, {
+        headers: {
+          ...getAuthorizationHeader(token),
+          'x-hermes-run-type': 'sync',
+        },
+      })
 
       if (typeof input === 'string') {
         const stream = new StringStream(input)
