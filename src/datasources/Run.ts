@@ -1,5 +1,5 @@
 import { RunDeleteObj, RunGetObj } from '@hermes-serverless/api-types-db-manager/run'
-import { RunStatus } from '@hermes-serverless/api-types-function-watcher'
+import { RunStatus, ResultInfo, ResultOutput } from '@hermes-serverless/api-types-function-watcher'
 import { StringStream } from '@hermes-serverless/stream-utils'
 import axios, { AxiosInstance } from 'axios'
 import request from 'request'
@@ -7,6 +7,7 @@ import { Readable } from 'stream'
 import { Environment } from '../Environment'
 import { getAuthorizationHeader } from '../utils/authUtils'
 import { FunctionID, PartialFunctionID } from './HermesFunction'
+import queryString from 'querystring'
 
 interface PartialFunctionIDWithOwner extends PartialFunctionID {
   functionOwner: string
@@ -96,12 +97,12 @@ export class RunDatasource {
     try {
       const { functionOwner, functionName, functionVersion } = functionID
       const res = await this.client.post(
-        this.baseURL + `${username}/run/${functionOwner}/${functionName}/${functionVersion}`,
+        this.baseURL + `/${username}/run/${functionOwner}/${functionName}/${functionVersion}`,
         input,
         {
           headers: {
             ...getAuthorizationHeader(token),
-            'x-hermes-run-type': 'sync',
+            'x-hermes-run-type': 'async',
           },
         }
       )
@@ -137,13 +138,47 @@ export class RunDatasource {
     }
   }
 
-  static async getRunStatus(username: string, runID: string, token: string): Promise<RunStatus> {
+  static async getRunStatus(
+    username: string,
+    runID: string,
+    token: string,
+    additionalFields: string[]
+  ): Promise<RunStatus> {
     try {
-      const res = await this.client.get(this.baseURL + `${username}/run/${runID}/status`, {
+      const url =
+        this.baseURL + `/${username}/run/${runID}/status?` + queryString.encode({ ...(additionalFields || []) })
+      const res = await this.client.get(url, {
         headers: {
           ...getAuthorizationHeader(token),
         },
-        responseType: 'stream',
+      })
+      return res.data
+    } catch (err) {
+      throw err
+    }
+  }
+
+  static async getRunResultInfo(username: string, runID: string, token: string): Promise<ResultInfo> {
+    try {
+      const url = this.baseURL + `/${username}/run/${runID}/result-info`
+      const res = await this.client.get(url, {
+        headers: {
+          ...getAuthorizationHeader(token),
+        },
+      })
+      return res.data
+    } catch (err) {
+      throw err
+    }
+  }
+
+  static async getRunResultOutput(username: string, runID: string, token: string): Promise<string> {
+    try {
+      const url = this.baseURL + `/${username}/run/${runID}/result-output`
+      const res = await this.client.get(url, {
+        headers: {
+          ...getAuthorizationHeader(token),
+        },
       })
       return res.data
     } catch (err) {
