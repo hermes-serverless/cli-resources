@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/hermes-serverless/cli-resources#readme",
   "dependencies": {
-    "@hermes-serverless/api-types-db-manager": "^0.0.2",
+    "@hermes-serverless/api-types-db-manager": "^0.0.3",
     "@hermes-serverless/api-types-function-watcher": "^0.0.1",
     "@hermes-serverless/custom-promises": "^0.1.0",
     "@hermes-serverless/stream-utils": "^0.4.0",

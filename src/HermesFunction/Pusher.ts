@@ -35,8 +35,8 @@ export class Pusher {
 
     await this.build(target)
     await this.pushWatcherToDockerhub()
-    if (exists && update) await this.updateOnHermes(token)
-    else await this.pushToHermes(token)
+    if (exists && update) return await this.updateOnHermes(token)
+    return await this.pushToHermes(token)
   }
 
   private build = (target: string) => {
@@ -47,7 +47,7 @@ export class Pusher {
     this.logger.log(chalk.bold.green('===== DEPLOY FUNCTION ON HERMES ======'))
     const fn = await HermesFunctionDatasource.deployFunction(this.fnData.username, this.fnData.functionObj, token)
     this.logger.log(chalk.bold.green('===== FUNCTION DEPLOYED ======'))
-    return fn
+    return fn.newFunction
   }
 
   private updateOnHermes = async (token: string) => {
@@ -59,7 +59,7 @@ export class Pusher {
       token
     )
     this.logger.log(chalk.bold.green('===== FUNCTION UPDATED ======'))
-    return fn
+    return fn.updatedFunctions
   }
 
   private checkIfFunctionExists = async (token: string) => {
