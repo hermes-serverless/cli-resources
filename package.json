@@ -32,7 +32,7 @@
     "@hermes-serverless/custom-promises": "^0.1.0",
     "@hermes-serverless/stream-utils": "^0.4.0",
     "@types/request": "^2.48.2",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "execa": "^2.0.4",
     "request": "^2.88.0"
   },
